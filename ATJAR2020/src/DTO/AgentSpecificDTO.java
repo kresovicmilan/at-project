@@ -1,6 +1,10 @@
 package DTO;
 
-public class AgentSpecificDTO {
+import java.io.Serializable;
+
+public class AgentSpecificDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private String hostJSON;
 	private String contentJSON;
 	
