@@ -189,12 +189,12 @@ public class AgentService implements AgentServiceRemote {
 	}
 	
 	@Override
-	public Response startAgentOtherHost(ReceivingMessageDTO msg, @PathParam("type") String type, @PathParam("name") String name) {
-		System.out.println("[INFO] [START AGENT] Starting agent on host {" + msg.getMessage() + "}");
-		System.out.println("[INFO] [START AGENT] Name: " + name);
-		System.out.println("[INFO] [START AGENT] Type: " + type);
-		updateSockets("agentmessage", new Gson().toJson("[INFO] [START AGENT] Starting agent on host {" + msg.getMessage() + "}"));
-		return RestHostBuilder.startAgentBuilder(msg.getMessage(), type, name);
+	public void startAgentOtherHost(ReceivingMessageDTO msg) {
+		System.out.println("[INFO] [START AGENT] Starting agent on host {" + msg.getHostIp() + "}");
+		System.out.println("[INFO] [START AGENT] Name: " + msg.getName());
+		System.out.println("[INFO] [START AGENT] Type: " + msg.getType());
+		updateSockets("agentmessage", new Gson().toJson("[INFO] [START AGENT] Starting agent on host {" + msg.getHostIp() + "}"));
+		RestHostBuilder.startAgentBuilder(msg.getHostIp(), msg.getType(), msg.getName());
 	}
 	
 	public void updateSockets(String socketMessageType, String json) {
