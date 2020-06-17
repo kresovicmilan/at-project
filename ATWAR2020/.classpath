@@ -13,6 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/JAR2020"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ATJAR2020"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

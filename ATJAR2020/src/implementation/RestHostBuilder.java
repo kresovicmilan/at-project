@@ -6,6 +6,9 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
+import com.google.gson.Gson;
+
+import DTO.AgentSpecificDTO;
 import DTO.HandshakeDTO;
 import models.ACLMessage;
 import models.Agent;
@@ -85,7 +88,10 @@ public class RestHostBuilder {
 		ResteasyClient client = new ResteasyClientBuilder().build();
 		ResteasyWebTarget target = client.target("http://" + receiver.getIpAddress() + "/ATWAR2020/rest/host");
 		RestAPI rest = target.proxy(RestAPI.class);
-		rest.sendAgentTypesToSpecificHost(currentSlaveHost, agentTypes);
+		String hostJSON = new Gson().toJson(currentSlaveHost);
+		String contentJSON = new Gson().toJson(agentTypes);
+		AgentSpecificDTO agentSpecificDTO = new AgentSpecificDTO(hostJSON, contentJSON);
+		rest.sendAgentTypesToSpecificHost(agentSpecificDTO);
 	}
 	
 	public static Collection<AgentType> getAgentTypesFromMasterBuilder(Host masterHost) {

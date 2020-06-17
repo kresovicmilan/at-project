@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import DTO.AgentSpecificDTO;
 import DTO.HandshakeDTO;
 import models.ACLMessage;
 import models.Agent;
@@ -68,8 +69,7 @@ public interface RestAPI {
 	@POST
 	@Path("/agent/classes")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public void sendAgentTypesToSpecificHost(Host currentSlaveHost, Collection<AgentType> agentTypes);
+	public void sendAgentTypesToSpecificHost(AgentSpecificDTO agentSpecificDTO);
 	
 	@GET
 	@Path("/agent/classes")

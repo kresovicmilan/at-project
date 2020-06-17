@@ -21,6 +21,7 @@ import javax.ws.rs.PathParam;
 
 import com.google.gson.Gson;
 
+import DTO.AgentSpecificDTO;
 import DTO.HandshakeDTO;
 import DTO.MessageDTO;
 import beans.ACLMessageBuilder;
@@ -235,7 +236,11 @@ public class HostService implements HostServiceRemote {
     }
     
     @Override
-    public void sendAgentTypesToSpecificHost(Host sendingHost, Collection<AgentType> agentTypes) {
+    public void sendAgentTypesToSpecificHost(AgentSpecificDTO agentSpecificDTO) {
+    	Host sendingHost = new Host();
+    	Collection<AgentType> agentTypes = new ArrayList<>();
+    	sendingHost = new Gson().fromJson(agentSpecificDTO.getHostJSON(), sendingHost.getClass());
+    	agentTypes = new Gson().fromJson(agentSpecificDTO.getContentJSON(), agentTypes.getClass()); 
     	if (hostManagerBean.getCurrentSlaveHost().getIpAddress().equals(hostManagerBean.getMasterHost().getIpAddress())) {
     		System.out.println("[INFO] [MASTER] Fifth step - Received agent types from host: " + sendingHost.getIpAddress());
         	this.hostManagerBean.getAgentTypes().put(sendingHost.getIpAddress(), new ArrayList<>(agentTypes));
