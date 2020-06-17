@@ -25,6 +25,7 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
+import DTO.ReceivingMessageDTO;
 import beans.HostManagerBean;
 import beans.StorageBean;
 import implementation.RestHostBuilder;
@@ -188,12 +189,12 @@ public class AgentService implements AgentServiceRemote {
 	}
 	
 	@Override
-	public Response startAgentOtherHost(@Valid String hostIp, @PathParam("type") String type, @PathParam("name") String name) {
-		System.out.println("[INFO] [START AGENT] Starting agent on host {" + hostIp + "}");
+	public Response startAgentOtherHost(ReceivingMessageDTO msg, @PathParam("type") String type, @PathParam("name") String name) {
+		System.out.println("[INFO] [START AGENT] Starting agent on host {" + msg.getMessage() + "}");
 		System.out.println("[INFO] [START AGENT] Name: " + name);
 		System.out.println("[INFO] [START AGENT] Type: " + type);
-		updateSockets("agentmessage", new Gson().toJson("[INFO] [START AGENT] Starting agent on host {" + hostIp + "}"));
-		return RestHostBuilder.startAgentBuilder(hostIp, type, name);
+		updateSockets("agentmessage", new Gson().toJson("[INFO] [START AGENT] Starting agent on host {" + msg.getMessage() + "}"));
+		return RestHostBuilder.startAgentBuilder(msg.getMessage(), type, name);
 	}
 	
 	public void updateSockets(String socketMessageType, String json) {

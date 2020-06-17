@@ -42,6 +42,6 @@ public interface AgentServiceRemote {
 	@POST
 	@Path("/running/{type}/{name}")
 	@Produces(MediaType.TEXT_PLAIN)
-	@Consumes(MediaType.TEXT_PLAIN)
-	public Response startAgentOtherHost(@Valid String hostIp, @PathParam("type") String type, @PathParam("name") String name);
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response startAgentOtherHost(ReceivingMessageDTO msg, @PathParam("type") String type, @PathParam("name") String name);
 }
