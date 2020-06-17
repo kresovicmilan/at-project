@@ -172,7 +172,9 @@ public class HostService implements HostServiceRemote {
 			System.out.println("[DELETE] [" + hostManagerBean.getCurrentSlaveHost().getIpAddress() + "] Host {" + alias + "} is removed");
 			
 			updateUsersInSocket();
-			
+			updateRunningAgents();
+			updateAgentTypes();
+    		updateSockets("agentmessage", new Gson().toJson("[DELETE] [" + hostManagerBean.getCurrentSlaveHost().getIpAddress() + "] Host {" + alias + "} is removed"));
 			purgeMessages(alias);
 			
 			if (hostManagerBean.getCurrentSlaveHost().getIpAddress().equals(hostManagerBean.getMasterHost().getIpAddress())) {
@@ -224,7 +226,10 @@ public class HostService implements HostServiceRemote {
 			System.out.println("[DELETE] [" + hostManagerBean.getCurrentSlaveHost().getIpAddress() + "] Host {" + alias + "} is removed");
 			
 			updateUsersInSocket();
-			
+			updateAgentTypes();
+			updateRunningAgents();
+			updateAgentTypes();
+    		updateSockets("agentmessage", new Gson().toJson("[DELETE] [" + hostManagerBean.getCurrentSlaveHost().getIpAddress() + "] Host {" + alias + "} is removed"));
 			purgeMessages(alias);
 		}
     }

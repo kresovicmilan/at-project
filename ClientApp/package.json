@@ -18,7 +18,7 @@
     "ws": "^7.3.0"
   },
   "scripts": {
-    "start": "set PORT=8081 && react-scripts start",
+    "start": "set PORT=8081 && set IP=192.168.0.17 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

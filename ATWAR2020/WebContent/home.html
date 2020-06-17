@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Chat App</title>
+<title>Project App</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -22,7 +22,7 @@
 let socket;
 let hostSocket = "";
 let host = "";
-let currentHost = "localhost:8080/ATWAR2020/";
+let currentHost = "192.168.0.17:8080/ATWAR2020/";
 if (sessionStorage.getItem('host') === "") {
 	hostSocket = "ws://" + currentHost + "/ws";
 	host = "http://" + currentHost;
@@ -63,9 +63,9 @@ window.onload = function() {
 
 		let date = new Date();
 	    date.setTime(date.getTime()+(1*60*60*1000));
-	    document.cookie = "usernameProjectApp" + " = " + username + ";path=/;domain=localhost";
-	    document.cookie = "chatAppAddress" + " = " + currentHost + ";path=/;domain=localhost";
-	    document.cookie = "externalHost" + " = " + sessionStorage.getItem('hostIp') + ";path=/;domain=localhost";
+	    document.cookie = "usernameProjectApp" + " = " + username + ";path=/;domain=192.168.0.17";
+	    document.cookie = "chatAppAddress" + " = " + currentHost + ";path=/;domain=192.168.0.17";
+	    document.cookie = "externalHost" + " = " + sessionStorage.getItem('hostIp') + ";path=/;domain=192.168.0.17";
 	    
 		$.ajax({
 			url: host + "rest/chat/users/loggedIn",
@@ -351,7 +351,7 @@ $(document).ready(function() {
 	      <h1 class="display-4"><b>Project App</b></h1>
 	      <p id="loggedInAs"class="lead mb-0">Logged in as .</p>
 	      <p id="loggedInAs" class="lead mb-0"><a href="#" id="logout-link">Logout</a></p>
-	      <p id="loggedInAs" class="lead mb-0"><a href="http://localhost:8081/" id="logout-link">Salary prediction</a></p>
+	      <p id="loggedInAs" class="lead mb-0"><a href="http://192.168.0.17:8081/" id="logout-link">Salary prediction</a></p>
 	      </p>
 	    </div>
 	  </div>
