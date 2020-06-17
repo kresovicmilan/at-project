@@ -78,10 +78,10 @@ public interface HostServiceRemote {
 	@Path("/agent/running")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Agent> sendingRunningAgentsToNode(Host sendingHost, Collection<Agent> receivingRunningAgents);
+	public Collection<Agent> sendingRunningAgentsToNode(AgentSpecificDTO agentSpecificDTO);
 	
 	@POST
 	@Path("/messages")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void sendACLMessage(Host sendingHost, ACLMessage newACLMessage);
+	public void sendACLMessage(AgentSpecificDTO agentSpecificDTO);
 }

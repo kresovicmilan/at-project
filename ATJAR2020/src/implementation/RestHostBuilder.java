@@ -105,14 +105,20 @@ public class RestHostBuilder {
 		ResteasyClient client = new ResteasyClientBuilder().build();
 		ResteasyWebTarget target = client.target("http://" + receivingHost.getIpAddress() + "/ATWAR2020/rest/host");
 		RestAPI rest = target.proxy(RestAPI.class);
-		return rest.sendingRunningAgentsToNode(sendingHost, receivingRunningAgents);
+		String hostJSON = new Gson().toJson(sendingHost);
+		String contentJSON = new Gson().toJson(receivingRunningAgents);
+		AgentSpecificDTO agentSpecificDTO = new AgentSpecificDTO(hostJSON, contentJSON);
+		return rest.sendingRunningAgentsToNode(agentSpecificDTO);
 	}
 	
 	public static void sendACLMessageBuilder(Host sendingHost, String receivingHostIp, ACLMessage newACLMessage) {
 		ResteasyClient client = new ResteasyClientBuilder().build();
 		ResteasyWebTarget target = client.target("http://" + receivingHostIp + "/ATWAR2020/rest/host");
 		RestAPI rest = target.proxy(RestAPI.class);
-		rest.sendACLMessage(sendingHost, newACLMessage);
+		String hostJSON = new Gson().toJson(sendingHost);
+		String contentJSON = new Gson().toJson(newACLMessage);
+		AgentSpecificDTO agentSpecificDTO = new AgentSpecificDTO(hostJSON, contentJSON);
+		rest.sendACLMessage(agentSpecificDTO);
 	}
 	
 	public static void stopAgentBuilder(String receivingHostIp, String agentName) {

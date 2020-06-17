@@ -203,7 +203,7 @@ public class HostManagerBean {
 	
 	public void startAgain(String err) {
 		try {
-			System.out.println("[INFO] " + err + "step retrying");
+			System.out.println("[INFO] " + err + " step retrying");
 			switch(err) {
 				case "First":
 					System.out.println("[INFO] [NEW HOST] First step - Register to master: " + this.currentSlaveHost.getIpAddress());

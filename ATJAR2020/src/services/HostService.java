@@ -277,7 +277,11 @@ public class HostService implements HostServiceRemote {
     }
     
     @Override
-    public Collection<Agent> sendingRunningAgentsToNode(Host sendingHost, Collection<Agent> receivingRunningAgents) {
+    public Collection<Agent> sendingRunningAgentsToNode(AgentSpecificDTO agentSpecificDTO) {
+    	Host sendingHost = new Host();
+    	Collection<Agent> receivingRunningAgents = new ArrayList<>();
+    	sendingHost = new Gson().fromJson(agentSpecificDTO.getHostJSON(), sendingHost.getClass());
+    	receivingRunningAgents = new Gson().fromJson(agentSpecificDTO.getContentJSON(), receivingRunningAgents.getClass()); 
     	if (receivingRunningAgents.size() == 0 && hostManagerBean.getCurrentSlaveHost().getIpAddress().equals(hostManagerBean.getMasterHost().getIpAddress())) {
 	    	System.out.println("[INFO] [MASTER] Seventh step - Received request for retrieval of all running agents from {" + sendingHost.getIpAddress() + "}");
 	    	Collection<Agent> allRunningAgents = new ArrayList<>();
@@ -298,7 +302,11 @@ public class HostService implements HostServiceRemote {
     }
     
     @Override
-    public void sendACLMessage(Host sendingHost, ACLMessage newACLMessage) {
+    public void sendACLMessage(AgentSpecificDTO agentSpecificDTO) {
+    	Host sendingHost = new Host();
+    	ACLMessage newACLMessage = new ACLMessage();
+    	sendingHost = new Gson().fromJson(agentSpecificDTO.getHostJSON(), sendingHost.getClass());
+    	newACLMessage = new Gson().fromJson(agentSpecificDTO.getContentJSON(), newACLMessage.getClass());
     	System.out.println("[INFO] ["+ this.hostManagerBean.getCurrentSlaveHost().getIpAddress() +"] Received new ACL message from {" + sendingHost.getIpAddress() + "}");
     	//this.hostManagerBean.getACLmessages().put(UUID.randomUUID(), newACLMessage);
     	//TODO update list of acl messages on other hosts
