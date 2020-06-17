@@ -38,8 +38,7 @@ public interface AgentServiceRemote {
 	public Response stopAgent(@PathParam("aid") String name);
 	
 	@POST
-	@Path("/running/{type}/{name}")
+	@Path("/running/{type}/{name}/{ipaddress}")
 	@Produces(MediaType.TEXT_PLAIN)
-	@Consumes(MediaType.TEXT_PLAIN)
-	public Response startAgentOtherHost(@PathParam("type") String type, @PathParam("name") String name, String hostIp);
+	public Response startAgentOtherHost(@PathParam("type") String type, @PathParam("name") String name, @PathParam("ipaddress") String hostIp);
 }

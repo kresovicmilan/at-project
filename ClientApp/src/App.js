@@ -127,7 +127,8 @@ class App extends React.Component {
       .catch(err => console.log(err.response.data));
     } else {
       console.log("Usao je sada ovde jer nisu isti");
-      axios.post("http://" + ip + "rest/agents/running/" + this.state.chosenAgentType + "/" + this.state.chosenAgentName)
+      console.log(this.state.chosenHost);
+      axios.post("http://" + ip + "rest/agents/running/" + this.state.chosenAgentType + "/" + this.state.chosenAgentName, this.state.chosenHost)
       .then(res => console.log("[SUCCESS] Agent from other host is added"))
       .catch(err => console.log(err.response.data));
     }
