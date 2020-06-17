@@ -2,6 +2,7 @@ package services;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import DTO.ReceivingMessageDTO;
 import models.Agent;
 import models.AgentType;
 
@@ -38,7 +40,8 @@ public interface AgentServiceRemote {
 	public Response stopAgent(@PathParam("aid") String name);
 	
 	@POST
-	@Path("/running/{type}/{name}/{ipaddress}")
+	@Path("/running/{type}/{name}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response startAgentOtherHost(@PathParam("type") String type, @PathParam("name") String name, @PathParam("ipaddress") String hostIp);
+	@Consumes(MediaType.TEXT_PLAIN)
+	public Response startAgentOtherHost(@Valid String hostIp, @PathParam("type") String type, @PathParam("name") String name);
 }

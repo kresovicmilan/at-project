@@ -11,6 +11,7 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.validation.Valid;
 import javax.websocket.Session;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -187,7 +188,7 @@ public class AgentService implements AgentServiceRemote {
 	}
 	
 	@Override
-	public Response startAgentOtherHost(@PathParam("type") String type, @PathParam("name") String name, String hostIp) {
+	public Response startAgentOtherHost(@Valid String hostIp, @PathParam("type") String type, @PathParam("name") String name) {
 		System.out.println("[INFO] [START AGENT] Starting agent on host {" + hostIp + "}");
 		System.out.println("[INFO] [START AGENT] Name: " + name);
 		System.out.println("[INFO] [START AGENT] Type: " + type);
