@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ATJAR2020">
+        <wb-resource deploy-path="/" source-path="/src" tag="defaultRootSource"/>
+        <property name="ClientProject" value="ATJARClient2020"/>
+        <property name="ClientJARURI" value="ATJARClient2020.jar"/>
+        <property name="java-output-path" value="/ATJAR2020/build/classes"/>
+    </wb-module>
+</project-modules>

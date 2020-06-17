@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: ATJARClient2020.jar
+Dependencies: deployment.ATEAR2020.ear.ATWAR2020.war
+
