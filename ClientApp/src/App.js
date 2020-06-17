@@ -126,6 +126,7 @@ class App extends React.Component {
       .then(res => console.log("[SUCCESS] Agent is added"))
       .catch(err => console.log(err.response.data));
     } else {
+      console.log("Usao je sada ovde jer nisu isti");
       axios.post("http://" + ip + "rest/agents/running/" + this.state.chosenAgentType + "/" + this.state.chosenAgentName)
       .then(res => console.log("[SUCCESS] Agent from other host is added"))
       .catch(err => console.log(err.response.data));
@@ -253,8 +254,6 @@ class App extends React.Component {
         <div className="row mb-5">
           <div className="col-lg-8 text-white py-4 text-center mx-auto">
             <h1 className="display-4"><b>Salary Prediction</b></h1>
-            <p id="loggedInAs"className="lead mb-0">Logged in as {this.state.username}.</p>
-            <p id="loggedInAs" className="lead mb-0"><a onClick = {this.onBackButtonHandler} id="logout-link">Back</a></p>
           </div>
         </div>
 
